@@ -1,0 +1,43 @@
+<!-- interface/templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scraped Tweets</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Search Form -->
+    <form class="search-form" method="post" action="/">
+        <input class="search-input" type="text" name="search" placeholder="Search by user name">
+        <button class="search-button" type="submit">Search</button>
+        <button class="show-all-button" type="submit" name="show_all" value="date">Show all</button>
+    </form>
+
+    <!-- New User Form -->
+    <form class="new-user-form" method="post" action="/add_user">
+        <input class="new-user-input" type="text" name="new_user" placeholder="Add new user tweets">
+        <button class="new-user-button" type="submit">Add Tweets</button>
+    </form>
+
+    <ul id="tweet-list">
+        {% for tweet in tweets %}
+            <li class="tweet">
+                <img class="user-avatar" src="{{ tweet.avatar }}" alt="User Avatar">
+                <div class="user-info">
+                    <p class="user-name">{{ tweet.user }}</p>
+                    <p class="tweet-date">{{ tweet.date }}</p>
+                    <p class="tweet-text">{{ tweet.tweet }}</p>
+                    <ul class="media-list">
+                        {% for media in tweet.media %}
+                            <li class="media-item"><img src="{{ media }}" alt="Media"></li>
+                        {% endfor %}
+                    </ul>
+                    <p>{{ tweet.statistic }}</p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

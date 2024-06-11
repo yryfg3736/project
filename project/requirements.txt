@@ -1,0 +1,8 @@
+flask==2.2.3
+pymongo==4.4.1
+dnspython==2.3.0
+beautifulsoup4==4.11.1
+selenium==4.6.0
+webdriver-manager==3.8.4
+nest-asyncio==1.5.4
+werkzeug==2.2.3
